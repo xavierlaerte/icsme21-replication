@@ -10,6 +10,6 @@ Ommited due to DBR
 
 Please, find:
 
-* AdmiTD source code at /admitd
-* Datasets at /dataset
-* Python and R scripts at /scripts 
+* Dataset discussed in Section II and used in RQ 1, 2 and 3 at **/dataset**;
+* AdmiTD source code used in RQ 2 at **/admitd**;
+* Python and R scripts at **/scripts**. 
