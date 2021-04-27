@@ -4,7 +4,7 @@ _Self-Admitted Technical Debt (SATD) is a particular case of Technical Debt (TD)
 
 ## Authors
 
-Ommited for DBR
+Ommited due to DBR
 
 ## Instructions
 
