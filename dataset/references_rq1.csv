@@ -1,0 +1,191 @@
+Repository,TD-Label,# SATD-C,#SATD-I Open,#SATD-I Closed,#SATD-I Total,#References,%References
+microsoft/vscode,debt,433,130,1560,1690,1,0.23%
+rust-lang/rust,C-cleanup,25,147,901,1048,1,4.00%
+mattermost/mattermost-server,Area/Technical Debt,954,167,857,1024,0,0.00%
+kubernetes/kubernetes,kind/cleanup,3808,119,754,873,8,0.21%
+pandas-dev/pandas,Refactor,823,160,576,736,0,0.00%
+cockroachdb/cockroach,C-cleanup,3289,227,491,718,20,0.61%
+storybookjs/storybook,cleanup,105,107,406,513,0,0.00%
+envoyproxy/envoy,tech debt,58,110,286,396,0,0.00%
+owncloud/core,technical debt,195,152,231,383,0,0.00%
+dotnet/efcore,type-cleanup,138,39,336,375,0,0.00%
+servo/servo,I-cleanup,969,45,316,361,0,0.00%
+elastic/kibana,technical debt,1148,167,130,297,8,0.70%
+openshift/origin,area/techdebt,3136,14,280,294,1,0.03%
+vuetifyjs/vuetify,has workaround,113,126,168,294,0,0.00%
+grpc/grpc,kind/internal cleanup,313,35,246,281,1,0.32%
+OpenRA/OpenRA,Refactor,269,97,178,275,0,0.00%
+radareorg/radare2,refactor,1776,53,218,271,11,0.62%
+netty/netty,cleanup,117,6,258,264,0,0.00%
+dotnet/roslyn,Concept-Design Debt,1313,179,72,251,3,0.23%
+meteor/meteor,Severity:has-workaround,152,1,226,227,0,0.00%
+vmware/clarity,flag: has workaround,81,24,201,225,0,0.00%
+numenta/nupic,type:cleanup,395,62,162,224,0,0.00%
+metabase/metabase,.Tech Debt or Refactoring,353,109,114,223,1,0.28%
+CesiumGS/cesium,cleanup,509,32,188,220,1,0.20%
+balderdashy/sails,needs cleanup,53,0,216,216,0,0.00%
+OpenRCT2/OpenRCT2,refactor,317,55,158,213,0,0.00%
+desktop/desktop,tech-debt,173,28,161,189,1,0.58%
+angular/angular,workaround1: obvious,1237,57,130,187,0,0.00%
+flarum/core,type/cleanup,4,47,112,159,0,0.00%
+angular/angular-cli,workaround1: obvious,490,36,122,158,2,0.41%
+elastic/logstash,code cleanup,98,81,74,155,0,0.00%
+goharbor/harbor,kind/debt,1000,40,114,154,0,0.00%
+adobe/brackets,code cleanup,644,53,99,152,5,0.78%
+kubernetes/minikube,kind/cleanup,47,21,131,152,3,6.38%
+nextcloud/server,technical debt,165,68,73,141,0,0.00%
+influxdata/influxdb,kind/tech-debt,478,36,104,140,1,0.21%
+WordPress/gutenberg,[Type] Code Quality,136,43,97,140,1,0.74%
+xtermjs/xterm.js,type/debt,74,19,117,136,0,0.00%
+wagtail/wagtail,type:Cleanup/Optimisation,41,36,99,135,0,0.00%
+google/blockly,type: cleanup,106,39,92,131,0,0.00%
+cilium/cilium,kind/cleanup,1742,18,111,129,0,0.00%
+withspectrum/spectrum,TBD: Tech Debt,215,36,91,127,2,0.93%
+firecracker-microvm/firecracker,Quality: Technical Debt,19,33,88,121,1,5.26%
+mirumee/saleor,technical debt,39,13,106,119,0,0.00%
+ianstormtaylor/slate,debt,13,5,113,118,0,0.00%
+brave/brave-browser,workaround/shields-down,1,39,78,117,0,0.00%
+PowerShell/PowerShell,Issue-Code Cleanup,257,63,50,113,0,0.00%
+cypress-io/cypress,existing workaround,304,61,48,109,1,0.33%
+pry/pry,refactor,28,6,101,107,0,0.00%
+weaveworks/scope,tech-debt,831,33,66,99,0,0.00%
+neovim/neovim,refactor,281,31,68,99,0,0.00%
+dart-lang/sdk,analyzer-technical-debt,212,76,23,99,0,0.00%
+Alluxio/alluxio,type-debt,352,58,37,95,0,0.00%
+protocolbuffers/protobuf,cleanup,395,26,68,94,0,0.00%
+microsoft/react-native-windows,Code Cleanup,392,43,37,80,1,0.26%
+CocoaPods/CocoaPods,s7:workaround available,37,22,58,80,0,0.00%
+microsoft/ChakraCore,Codebase Quality,1087,34,44,78,0,0.00%
+hashicorp/consul,theme/internal-cleanup,1244,36,41,77,1,0.08%
+NixOS/nixpkgs,9.needs: clean-up,106,16,61,77,0,0.00%
+vuejs/vue,has workaround,46,47,29,76,0,0.00%
+spyder-ide/spyder,type:Techdebt,176,15,59,74,0,0.00%
+exercism/exercism,type/improvement,0,52,22,74,0,#DIV/0!
+fish-shell/fish-shell,cleanup,187,5,68,73,0,0.00%
+pachyderm/pachyderm,technical-debt,295,15,56,71,1,0.34%
+openebs/openebs,kind/cleanup,3,0,70,70,0,0.00%
+loadimpact/k6,refactor,705,42,27,69,5,0.71%
+angular/protractor,type: cleanup,22,5,64,69,0,0.00%
+CachetHQ/Cachet,Refactor,1,15,53,68,0,0.00%
+sequelize/sequelize,existing workaround,24,60,7,67,0,0.00%
+ampproject/amphtml,Cleanup AMP Experiments,1186,6,60,66,0,0.00%
+pyinstaller/pyinstaller,@low / cleanup,190,16,50,66,0,0.00%
+kubernetes/dashboard,kind/cleanup,7,11,55,66,0,0.00%
+apple/turicreate,cleanup,2350,28,37,65,0,0.00%
+arendst/Tasmota,workaround,176,0,63,63,0,0.00%
+DivanteLtd/vue-storefront,refactor,71,2,61,63,0,0.00%
+encode/django-rest-framework,Cleanup,14,5,58,63,0,0.00%
+vitessio/vitess,Type: Internal Cleanup,369,38,24,62,0,0.00%
+google/gvisor,type: cleanup,555,46,13,59,0,0.00%
+SirVer/ultisnips,answered or workaround exists,5,2,57,59,0,0.00%
+microsoft/fluentui,Type: Cleanup,484,28,30,58,0,0.00%
+apex/up,Refactor,31,18,40,58,0,0.00%
+springfox/springfox,has-workaround,25,5,51,56,0,0.00%
+liabru/matter-js,improve,10,34,20,54,0,0.00%
+microsoft/WSL,workaround-available,0,10,44,54,0,#DIV/0!
+arangodb/arangodb,workaround available,3299,10,43,53,0,0.00%
+emberjs/ember.js,Cleanup,145,2,51,53,0,0.00%
+logaretm/vee-validate,☔ has workaround,3,0,53,53,0,0.00%
+Theano/Theano,Clean up,323,14,38,52,0,0.00%
+react-page/react-page,debt,9,0,51,51,0,0.00%
+pytorch/pytorch,has workaround,1963,31,19,50,0,0.00%
+tektoncd/pipeline,kind/cleanup,1035,15,33,48,1,0.10%
+naver/pinpoint,cleanup,280,0,48,48,0,0.00%
+statsmodels/statsmodels,type-cleanup,1072,22,23,45,0,0.00%
+material-components/material-components-web,techdebt,17,11,33,44,0,0.00%
+jetstack/cert-manager,kind/cleanup,288,18,24,42,1,0.35%
+yabwe/medium-editor,html cleanup,46,36,6,42,0,0.00%
+marionettejs/backbone.marionette,refactor,0,1,40,41,0,#DIV/0!
+getredash/redash,Tech Debt,834,13,27,40,0,0.00%
+angular-ui/ui-grid,workaround,253,11,29,40,0,0.00%
+helm/helm,refactor,43,0,40,40,0,0.00%
+falconry/falcon,cleanup,51,6,33,39,0,0.00%
+rkt/rkt,kind/cleanup,465,19,18,37,1,0.22%
+VowpalWabbit/vowpal_wabbit,Technical debt,43,26,11,37,0,0.00%
+appium/appium,TechDebt,5,5,32,37,0,0.00%
+jemalloc/jemalloc,refactor,2,13,24,37,0,0.00%
+kubernetes-sigs/kind,kind/cleanup,96,1,35,36,0,0.00%
+tensorflow/tensorboard,type:cleanup,433,19,16,35,0,0.00%
+swagger-api/swagger-codegen,Issue: Workaround available,3181,21,13,34,0,0.00%
+ReactiveX/RxJava,Cleanup,145,0,34,34,0,0.00%
+aframevr/aframe,code quality,144,3,31,34,0,0.00%
+modin-project/modin,Code Quality :100:,59,12,22,34,0,0.00%
+docker/compose,kind/cleanup,16,1,33,34,0,0.00%
+StreisandEffect/streisand,kind/cleanup,1,12,21,33,0,0.00%
+syl20bnr/spacemacs,Found work-around,0,17,16,33,0,#DIV/0!
+scrapy/scrapy,cleanup,16,11,21,32,0,0.00%
+agershun/alasql,Related to: Code quality,136,13,18,31,0,0.00%
+KaTeX/KaTeX,code cleanup,99,12,18,30,0,0.00%
+eclipse/che,kind/technical-debt,85,6,24,30,0,0.00%
+robolectric/robolectric,cleanup,191,10,17,27,0,0.00%
+gocd/gocd,technical-debt,186,0,27,27,0,0.00%
+libra/libra,techdebt,31,3,24,27,0,0.00%
+kubernetes/community,kind/cleanup,4,2,25,27,0,0.00%
+dotnet/machinelearning,code-sanitation,68,16,10,26,0,0.00%
+coredns/coredns,cleanup,28,1,25,26,0,0.00%
+pyro-ppl/pyro,refactor,81,10,15,25,0,0.00%
+TooTallNate/Java-WebSocket,Refactor,6,3,22,25,0,0.00%
+fullcalendar/fullcalendar,Codebase Cleanliness,362,4,20,24,0,0.00%
+upspin/upspin,cleanup,148,4,20,24,0,0.00%
+scylladb/scylla,code cleanup,46,18,6,24,0,0.00%
+activeadmin/activeadmin,workaround,23,6,18,24,0,0.00%
+relax/relax,refactor,15,1,23,24,0,0.00%
+vuejs/vue-router,has workaround,6,9,15,24,0,0.00%
+dexidp/dex,kind/cleanup,42,1,22,23,0,0.00%
+divio/django-cms,kind: cleanup,36,3,20,23,0,0.00%
+shelljs/shelljs,refactor,23,6,17,23,0,0.00%
+styleguidist/react-styleguidist,technical debt,11,2,21,23,0,0.00%
+buefy/buefy,workaround,1,5,18,23,0,0.00%
+os-js/OS.js,refactor,0,0,23,23,0,#DIV/0!
+PaddlePaddle/Paddle,Code Cleanup,467,0,22,22,0,0.00%
+google/cadvisor,kind/cleanup,79,16,6,22,0,0.00%
+osquery/osquery,debt,45,8,14,22,0,0.00%
+sferik/rails_admin,cleanup,21,1,21,22,0,0.00%
+SFTtech/openage,code quality,474,8,13,21,1,0.21%
+facebook/reason,Housecleaning,19,14,7,21,0,0.00%
+concourse/concourse,refactor,51,5,15,20,0,0.00%
+Automattic/mongoose,refactor,24,8,12,20,0,0.00%
+dotnet/aspnetcore,clean-up,444,4,15,19,0,0.00%
+GoogleContainerTools/skaffold,area/cleanup,318,4,15,19,0,0.00%
+nasa/openmct,refactor,29,4,15,19,0,0.00%
+quay/clair,kind/cleanup,8,0,19,19,0,0.00%
+gabime/spdlog,workaround exists,1,1,18,19,0,0.00%
+ichord/At.js,improve,1,1,18,19,0,0.00%
+elastic/beats,technical debt,290,6,12,18,1,0.34%
+beetbox/beets,refactor,52,8,10,18,0,0.00%
+esp8266/Arduino,type: code cleanup,51,3,15,18,0,0.00%
+vuejs/vue-cli,has workaround,31,5,13,18,0,0.00%
+GoogleContainerTools/kaniko,work-around-available,1266,9,8,17,0,0.00%
+nothings/stb,code quality,35,13,4,17,0,0.00%
+blei-lab/edward,Code cleanup,21,0,17,17,0,0.00%
+vuejs/vuepress,has workaround,6,5,12,17,0,0.00%
+PowerShell/Win32-OpenSSH,Area-Code Review and cleanup,0,1,16,17,0,#DIV/0!
+chef/chef,Type: Tech Debt,303,11,5,16,0,0.00%
+keepassxreboot/keepassxc,refactor,62,10,6,16,0,0.00%
+LinkedInAttic/hopscotch,code-cleanup,12,6,10,16,0,0.00%
+mkdocs/mkdocs,Cleanup,7,1,15,16,0,0.00%
+eggjs/egg,type: improve,0,2,14,16,0,#DIV/0!
+Jermolene/TiddlyWiki5,refactor,235,7,8,15,0,0.00%
+grpc/grpc-go,Type: Internal Cleanup,197,6,9,15,0,0.00%
+facebookresearch/ParlAI,Code Quality,126,5,10,15,0,0.00%
+microsoft/vscode-go,engineering-debt,14,0,15,15,0,0.00%
+gionkunz/chartist-js,cleanup,12,10,5,15,0,0.00%
+Strider-CD/strider,refactor,190,7,7,14,0,0.00%
+PrestaShop/PrestaShop,Workaround available,70,7,7,14,0,0.00%
+vlang/v,Type: Clean-Up,4,3,11,14,0,0.00%
+zsh-users/zsh-autosuggestions,has-workaround,1,4,10,14,0,0.00%
+lightningnetwork/lnd,code health,617,4,9,13,0,0.00%
+docker/distribution,refactor,362,4,9,13,0,0.00%
+brave/browser-laptop,workaround/allow-all-cookies,233,6,7,13,0,0.00%
+FriendsOfPHP/PHP-CS-Fixer,kind/cleanup,0,5,8,13,0,#DIV/0!
+perkeep/perkeep,cleanup,775,8,4,12,1,0.13%
+react-native-community/react-native-svg,workaround exists,40,0,12,12,0,0.00%
+fluxcd/flux,refactor,20,6,6,12,0,0.00%
+xi-editor/xi-editor,refactor,9,2,10,12,0,0.00%
+marshmallow-code/marshmallow,refactor,3,6,6,12,0,0.00%
+doorkeeper-gem/doorkeeper,refactor,3,1,11,12,0,0.00%
+metricsgraphics/metrics-graphics,code quality,2,1,11,12,0,0.00%
+OpenAPITools/openapi-generator,Issue: Workaround available,11252,6,5,11,0,0.00%
+google/lovefield,clean up,80,5,6,11,0,0.00%
+mochajs/mocha,refactor,22,3,8,11,0,0.00%
+android/ndk-samples,cleanup,5,0,11,11,0,0.00%

@@ -1,0 +1,6 @@
+TODO
+workaround
+fixme
+hack
+technical debt
+tech debt

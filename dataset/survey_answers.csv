@@ -1,0 +1,204 @@
+,Repository,Answer,Guidelines
+D1,goharbor/harbor,"a. When clarifying the main thought and flow of the code logic (C1)
+
+b. When there are bugs existing (I2)","*C1. If it acts as hints to the reader
+*I2. If it has high priority"
+D2,modin-project/modi,"I don’t think I have definitive guides on choosing one over another, though, so it’s mostly a “gut feeling”. I would say that I would use a FIXME-like comment for something local to the code where the comment is (like a rare edge case not handled which should be handled near the comment) [C5], while an issue or tracker is for some bigger beast, like “refactor this class” or “change the way those classes interact” [I1][I4].
+ 
+Now to your examples.
+Example #1 is not exactly a “to do” comment, but an explanation why do we need such a weird code after the comment. I don’t think there’s better way of explaining a “this is weird because we workaround that bug” thing, plus it fits perfectly to “fix the stuff in the near” criteria I’ve written above.
+ 
+Example #2 is something I would not call a TD (technically speaking), as in my point of view a TD is something being deliberately done wrong or inefficient to cut development costs in the short run. In case of #2 it wasn’t exactly so – I needed a variable that I can change during runtime and subscribe to its changes in the code, so It was more like a “feature tracker”. But even if we would classify it as a TD (which it partially is, I agree) you see that fixing it spanned multiple files and involved touching quite a lot of places in the codebase [I1].","*C5. If it has a local scope
+*I1. If it spans to multiple places
+*I4. If it requires medium/large effort to fix"
+D3,rust-lang/rust,"1. If the fix (or the problem) is complicated, then opening an issue means more work, because I have to explain it well enough other people will understand it. [C1]
+2. If the fix is simple, then putting it in an issue makes it more likely someone will try it as their first issue. [I6]
+
+Regardless of those two, if the problem impacts other work I usually open an issue anyway [I1] (e.g. https://github.com/rust-lang/rust/issues/83761).
+
+By the way, https://github.com/rust-lang/rust/blob/d203fceeb12f8c0e3123fc45036575018d2f990a/src/bootstrap/bootstrap.py#L672 is not technical debt, it's a missing feature. Implementing it would actually make the codebase harder to work on, not easier. https://github.com/rust-lang/rust/blob/16143d10679537d3fde4247e15334e78ad9d55b9/src/librustdoc/passes/collect_intra_doc_links.rs#L469-L471 would be a better example of tech debt. Actually I need to remove that FIXME, it's no longer relevant now that `resolve_associated_item` exists. I guess that's another reason to put comments in code, they're more likely to be noticed when the code is updated for an unrelated reason. [C1]","*C1. If it acts as hints to the reader
+*I1. If it spans to multiple places
+*I6. If it is a good first issue"
+D4,grpc/grpc,"In my opinion, you need both. And they should be linked by automation. There should be a 1:N relationship between bugs and todos in the codebase. When looking at a bug, there needs to be a way to refer to all the locations in the code where a TODO references that bug. The reverse direction also needs to be possible, i.e. when looking at a TODO, it should be easy to navigate to the bug teaching tracking it. [B1] This is simple if you use the format TODO(https://github.com/issues/...), as we usually do. You caught me being lazy or forgetful in that link.
+
+One critical element is that bugs need to receive an automated update when a TODO tracked by it is removed from the codebase. This may signify resolution of the issue or just a refactor, so there still needs to be a human in the loop to determine whether or not the issue is actually resolved.
+
+Likewise, when a bug is closed out that references TODOs, there should either be an automated change submitted to remove those TODOs from the codebase or the bug should reopen itself until all of the TODOs it references are removed from the codebase.
+
+I think you'd find the majority of the developers on my team agree with this assessment. We just haven't invested the time into that infrastructure yet.
+
+Sorry if this isn't the sort of answer you were looking for.",*B1. If there is 1:N relationship 
+D5,elastic/kibana,"I don't think I or my team have a clear ""guideline"" on when it is OK to leave a comment and when to create an issue. 
+My gut feeling: 
+1. if TODO is scoped to a module and only improves this particular piece of code - then I don't create an issue [C5]
+2. if TODO is more of architectural thing, spans multiple modules, and needs input from different teams, then I'd create an issue. [I1]
+
+Also, I love this take: https://twitter.com/dan_abramov/status/1215838693518430210","*C5. If it has a local scope
+*I1. If it spans to multiple places"
+D6,mattermost/mattermost-server,"I'm not a very structured person, so probably the issues/comments that you have seen have been done with a random criteria more than a structured way of thinking.
+
+Said that I can answer your 2 questions.
+
+a) I would use them in small projects where I have control over the whole code and I revisit the code frequently. [C7] Or as part of a PR that is a Work In Progress and is going to pass through a review process (that is going to detect that TODO comments). [C8]
+b) I would use issues whenever the project is big enough that you have to focus on certain part of the code, then, from my point of view, the TODO comments gets included and rarely removed. [I7] A new issue can easily get assigned and discussed in a wider environment.","*C8. If it explains TD for PR review
+*C7. If you revisit the code frequently
+*I7. If it can't be forgotten"
+D7,cockroachdb/cockroach,"I recommend both; the comment tells you where it's wrong, and the issue has better discussion on it. [B2]
+However, if there is no place for code, the issue is the minimum.",*B2. If it requires discussion and locality
+D8,kubernetes/kubernetes,"I firmly believe that the best documentation for software is in code, my experience has demonstrated to me that wikis, out of tree docs, ... quickly get outdated and are useless. However, this doesn't mean that this should be the only source of documentation, high level docs, architecture, diagrams, designs, ... those things have to exist and can use wikis, docs, files, ...
+
+To your first question, I always recommend to document everything like TD on code ... every developer will find it always. [C1]
+
+To your second point, I don't think that code should be used to track issues, you need the right tool for each job, and in this case we have Github Issues to do tracking, but there are a lot of software that allows you to do this, pick your poison here :).",*C1. If it acts as hints to the reader
+D9,cockroachdb/cockroach,"I would say that often my choice to open an issue or leave a TODO isn't very scientific. Leaving a TODO is easier than writing an issue, so sometimes the decision is made out of pure laziness :) But in an ideal world, I would try to follow these guidelines:
+
+1. Create BOTH an issue and a TODO if possible. Open an issue explaining the problem, and then reference the issue number from a TODO comment in a relevant part of the code. For example: https://github.com/cockroachdb/cockroach/blob/d52f071bb5277920b593711fc810fc092a2a2f24/pkg/sql/opt/exec/execbuilder/mutation.go#L155. I typically use this approach if I discover an important issue in the process of writing a PR, but it's too large or difficult to fix in the current PR. [B3]
+
+2. If it's not clear exactly where in the code the problem is or where a fix should be implemented, [I1] then opening an issue without a corresponding TODO is fine. It's also perfectly fine to just open an issue even if you know where the fix should go but you don't have an in-progress PR open for that part of the code. [I4] In that case, you can still reference line numbers or a GitHub link in the issue description.
+
+3. If, in the process of writing a PR, you have an idea for something that might improve the existing code but it's not very important or urgent, then I think it's ok to just leave a TODO without opening an issue. [C2]This can be dangerous, though, since it's easy to forget about TODOs. On my team, we typically make a point of grepping for TODOs at the end of a release cycle to make sure we didn't miss something important. I also leave TODOs without a corresponding issue number if fixing it would require more than a single issue's worth of work. [?] In the example you gave above where I reference ""taking latency into account"", making the optimizer aware of latency is a big task that is on our product roadmap but may not have a corresponding GitHub issue. TODOs can also be helpful to explain a hacky implementation so that a future reader of the code can improve it or at least understand why the original implementer made the choice that they did. [C1][C6]","*B3. If it explains code and can’t be forgotten
+*C1. If it acts as hints to the reader
+*C2. If it has low priority
+*C6. If it notes [explains] smaller implementation
+*I1. If it spans to multiple places
+*I4. If it requires medium/large effort to fix"
+D10,kubernetes/kubernetes,"For a), I left this as a TODO comment because it was a small implementation detail and I didn't see it as an important issue to tackle.[C2] If I were to create a github issue for this, it would probably be more for a general refactor of related types and then I would bundle that TODO (and related TODOs) in that issue.
+
+For b), I opened this as a github issue above because I saw this as something beyond just an implementation detail; it was something that would potentially affect users running end to end tests. [I2]
+This could have been kept as a TODO comment but I think the github issue was more appropriate because it provides a venue to discuss potential solutions with other contributors [I3]
+
+Generally speaking, I think github issues are useful for archiving larger scoped problems that impact usability or performance or code readability (just to name a few examples). [I1] Github issues are particularly useful in the Kubernetes ecosystem because they can be tagged with ""/good-first-issue"" which enables new contributors to find things to work on and get familiar with the project. [I6] I think TODO comments are useful for noting smaller implementation details or ""nits / nitpicks"". [C6]
+
+It's all very context dependent, but hopefully you're able to extract something from this response to find a common pattern for which TD documentation type is best based on the TD.","*C2. If it has low priority
+*C6. If it clarifies smaller implementation
+*I1. If it spans to multiple places
+*I2. If it has high priority
+*I3. If it requires discussion
+*I6. If it is a good first issue"
+D11,cockroachdb/cockroach,"IMO, a TODO in code on its own isn't a record of work to do /  expectation that it will be done but rather just writing down how it might be done if it is picked up, so if I come back to this code later, there's a record of what i was thinking [C3] w.r.t how to improve it. An issue in the backlog is the actual ""should do this thing"" record, that could cause it to actually get done. [I7] So if I'm writing some code and think we should improve it later, I'd a) leave a todo and b) file an issue to implement what's in the TODO.[B3] We we've done this in the past where we grep'ed through the TODOs in the PRs for a new feature and filed issues for the ones we actually wanted to come back and do.","*C3. If it acts as notes for yourself
+*I7. If it can't be forgotten
+*B3. If it explains code and can’t be forgotten"
+D12,cockroachdb/cockroach,"Definitely interested in what the preferences are in the crdb code base. In my programming in general, TODO comments are not only for documenting 'debt' but also giving myself permission to keep moving towards the overall goal despite there being problems I can't solve at the moment. [C3] And also signalling to future readers some of the bits I wasn't happy with. [C1]","*C1. If it acts as hints to the reader
+*C3. If it acts as notes for yourself"
+D13,cockroachdb/cockroach,I write TODOs when I have thoughts about how the code could be better [C3]. They aren’t always debt. If they are debt that has causes known problems they do likely deserve an issue too [I2]. One controversy at crl is whether or not we want to cross reference code and issues.,"*C3. If it acts as notes for yourself
+*I2. If it has high priority"
+D14,cockroachdb/cockroach,A compelling argument against referencing issues in the code is it means that GitHub implicitly becomes part of the code base. A pragmatic reason to do it is can unify context.,-
+D15,hashicorp/consul,"a) When do you recommend documenting TD using code comments?
+
+Generally I will use TODO (and occasionally FIXME) in code comments as notes to myself [C3]. As I am reading code to learn it, or when I am writing code, I will often come across things that look strange or look like they could be improved. I don't want to lose my focus on my primary objective, but I also don't want to forget about the thing I just saw (which is likely since I'm focused on something else). So I will write a short TODO to myself to remind myself later. Often I will see the notes I left for myself when I am reviewing my own code before opening a github pull request.
+
+Sometimes I will resolve the TODOs before opening the PR, sometimes I'll create a separate branch to work on resolving it, and sometimes I will leave the comment for a later time. If I leave it I will often try to improve the wording to make it more useful to anyone else who might read it.
+
+I would generally recommend using code comments for things that are:
+low priority - not likely causing any problems for users [C2]
+small effort to fix - not likely to be scheduled as part of sprint planning [C4]
+I think the intent of inline code comments is not to track work, but to act as hints to the reader. If I've noticed something strange about the code a TODO or FIXME can help the next reader to be less confused. [C1] In the example you linked, the new struct is very small, so it might not be clear to readers why it exists. By adding a TODO it gives them a hint about what other fields might be added to that struct.
+
+b) When do you recommend opening an issue?
+
+Generally I will open an issue if I think the technical debt issue has any of the following properties:
+high priority - it is or could cause problems for users [I2]
+medium or large effort to fix - needs to be scheduled as part of sprint planning since it will be worked on instead of other prioritized work [I4]
+ambiguous - the fix may require more discussion if there are multiple options for fixing the problem [I3]
+can't be fixed immediately - the change will be necessary later, but is not something that can be done immediately for some reason [I4]
+
+I also find that sometimes issues that start as code comments, after some time if I notice patterns of common problems in multiple places, I might choose to open an issue about it to call more attention to the problem. https://github.com/hashicorp/consul/issues/9983 is an example of such a case.","*C1. If it acts as hints to the reader
+*C2. If it has low priority
+*C3. If it acts as notes for yourself
+*C4. If it requires small effort to fix
+*I2. If it has high priority
+*I3. If it requires discussion
+*I4. If it requires medium/large effort to fix"
+D16,elastic/kibana,"a) When do you recommend documenting TD using code comments?
+
+A code comment will only get resolved if someone else happens to be in the same part of the code and cares about it. Generally, you can't assume that it'll ever get fixed unless you have some specific process in place for resolving these (which I've never seen in practice). So this can only be made for really little things that aren't worth putting into a backlog or things that you know will never get resolved anyways [C2] (due to political or technical issues, so it's better to not clutter the backlog). 
+
+b) When do you recommend opening an issue?
+ 
+ Whenever you're consciously taking on tech debt. [I7] This should be the default and, though I've used them, code comments with ""TODO"" and the like should be discouraged.","*C2. If it has low priority
+*I7. If it can't be forgotten"
+D17,OpenRCT2/OpenRCT2,"a) If it's something fairly small (which will take <1h), but that you don't want or can't spend time doing at that moment [C4]
+b) When it's part of a major refactor that requires multiple steps/milestones or to outsource tasks in a more organized manner [I1]","*C4. If it requires small effort to fix
+*I1. If it spans to multiple places"
+D18,OpenRCT2/OpenRCT2,"a) when want to highlight something in the code review, particularly in cases where some limitation is explained used n other part of code [C8]
+b) when I spot some problem that I don't have time to fix now [I4]; when the problem is fairly benign or simple and makes a good first issue [I6]","*C8. If it highlights TD for review
+*I4. If it requires medium/large effort to fix
+*I6. If it is a good first issue"
+D19,OpenRCT2/OpenRCT2,"IMO: To-do comments are almost always about something that you think needs refactoring at some point, but is not directly related to what you are currently trying to achieve.
+a) When it's something that is not a problem. [C2] Leaving a TD comment in the code can be useful when someone else bumps into the same code. [C1]
+b) When something spans multiple source files, sometimes taking hours to do [I1]","*C1. If it acts as hints to the reader
+*C2. If it has low priority
+*I1. If it spans to multiple places"
+D20,OpenRCT2/OpenRCT2,"a) when it's not part of the current pr but noticed when doing it. [C1]
+b) when i want to encourage others to also perform some refactoring or want to document a large multi pr refactoring job. [I1]","*C1. If it acts as hints to the reader
+*I1. If it spans to multiple places"
+D21,tektoncd/pipeline,"a) When do you recommend documenting TD using code comments?
+
+I would recommend TODO comments when I want to give the reader of the code some pointer about some change we'd like to make to the code they're reading [C1]. A good TODO links to an issue describing the issue in more detail. [B2]
+
+b) When do you recommend opening an issue?
+
+If I expect any discussion about some piece of technical debt [I3], or want to track resolution of that debt (which is nearly always) [I8], I want that tracked in an issue. Issues give you an opportunity to assign the issue, close the issue, refer to the issue by number, use markdown and links to refer to other discussions, etc. Issues are better than code comments in nearly every way, except that they aren't living next to the code in question. ","*C1. If it acts as hints to the reader
+*I3. If it requires discussion
+*I8. If you track resolution
+*B2. If it requires discussion and locality"
+D22,cockroachdb/cockroach,"I use code comments when the technical debt primarily has to do with the code, such as a refactor, or when the existence of the technical debt is important to understand the following code block. [C6] In your first link, it's confusing to the reader to see that most of the tests run in both enterprise and sinkless mode, but that test runs only in enterprise mode. Is this feature meant to be used only in enterprise mode? If not, why is there no sinkless test? Adding the TODO is necessary to make the file readable. I might also have added an issue.
+
+I open issues when I don't have a clear sense of how the problem I'm describing relates to the code, [I1] or in a collaborative project if the code isn't in a section I ""own"". I also open issues if it's important to document more visibly that there's a known bug or limitation with the software. [I7]","*C6. If it clarifies smaller implementation
+*I1. If it spans to multiple places
+*I7. If it can't be forgotten"
+D23,rust-lang/rust,"1) When do you recommend documenting TD using code comments?
+
+I think it's always better to document hacks / specificities / unintuitive behaviour via comments, to help any other programmer (or your future self :) ) that would pass by the piece of code you wrote, and debug a related issue. [C1] Locality is important, so having information such as a comment as close as possible to the problematic piece of code makes all the difference for anyone who'll be dealing with unexplained behaviour in this source file / function / code block.
+
+So I'd say documenting TD with code comments is important when they're about some piece of technical debt that is essentially non ideal behaviour, but self-contained, something that could certainly lead to further debugging if not highlighted by the comment. [C5]
+
+2) When do you recommend opening an issue?
+
+Opening an issue is always better in the case of a community project, where the issue is far more visible / searchable than a code comment. [I7] It's also a way for other members of the project to put in their advice about the issue being discussed. [I3] I'd say it's less about a specific hacky code block, and more about some more abstract design decision [I1], or like the issue you linked, something where a decision needs to be taken by project maintainers (in this case, whether to add more dependencies to the compiler development bootstrap toolchain).","*C1. If it acts as hints to the reader
+*C5. If it has a local scope
+*I1. If it spans to multiple places
+*I3. If it requires discussion
+*I7. If it can't be forgotten"
+D24,vitessio/vitess,"a) When do you recommend documenting TD using comments?
+
+I typically* try to limit commits to follow only one objective. i.e.
+- A bug fix
+- A refactor
+- A new feature
+
+Mixing and matching makes it hard to trace problems. I believe the TD comment you mentioned was introduced by a refactor, which commented on a previously existing bug/opportunity for future enhancement.
+
+* For more trivial examples, I am sure I frequently break this. Which is why I said I try.
+
+b) When do you recommend opening an issue?
+
+I typically open issues when I am looking for either volunteers to work on it [I6], solicit more input [I3], or want to make others aware that it is a known issue. [I7]
+
+In comparing the two that you mentioned: the code comment had a viable workaround, and I think in my head I was either thinking that it was not easy for new volunteers or because of the viability did not need others to be as aware of it. I think in my head it was more of a housekeeping chore to acknowledge it was not in an ideal state. [I7]","*I3. If it requires discussion
+*I6. If it is a good first issue
+*I7. If it requires visibility"
+D25,cockroachdb/cockroach,"The usual rule of thumb I use is that TODOs should be for short, one-off examples of tech debt that aren't a high priority to tackle rightaway [C2] [C5].. Anything larger that affects multiple parts of the code base should be an issue [I1], as well as anything that needs to be done with some level of certainty [I2].","*C2. If it has low priority
+*C5. If it has a local scope
+*I1. If it spans to multiple places
+*I2. If it has high priority"
+D26,elastic/kibana,"The problem with technical debt is often that everyone wants to get rid of it at some point, but nobody is particularly interested in actually doing the work. It is usually not easy (tech debt exists for a reason, if a better solution would have been easy, the original implementor would have chosen it), and it does not fit into the time planning of software teams who need to release visible improvements and new features.
+
+a) I would recommend documenting TD using code comments when the information helps to understand the code by giving additional context for either myself or a colleague in the future, but is only necessary information in this very local context. [C1][C3][C5] In the example you picked I didn't have the time to test if the if-condition could ever be met, but I know that I would need to return well-formed data in either case. The fact that I didn't dig deeper about how likely the error case is, is only interesting to anyone if there's a problem in that code path at some point, and then the comment will be read during the debugging / fixing process. Other than that, it simply doesn't matter.
+
+In my opinion, code comments are the best way to give contextual information in code because they are most likely to survive time and be updated when the code changes. Pointing out tech debt is only one example for this.
+
+b) I would recommend opening TD issues whenever it is decided that a certain solution is good enough to be shipped, and everyone agrees that it needs to be improved later, either in a code review with colleagues, or by a manager / tech lead. Then the issue serves as documentation of the decision to leave the non-perfect state for now, and as a reminder of the tech debt as such. [I7] Opening tech debt issues also helps to get data about the code quality of a project that can be used to convince management to invest in either cleaning-up time, or a refactor / rewrite of the code. [I8] In my experience tech debt issues are never just fixed in the same way as other bugs are. They are more a political /statistical instrument, if that makes sense?","*C1. If it acts as hints to the reader
+*C3. If it acts as notes for yourself
+*C5. If it has a local scope
+*I7. If it requires visibility
+*I8. If it is used to track resolution"
+D27,,"Jumping straight into it:
+a) I typically leave code comments to indicate future work that needs to be done when the TD in question is isolated to a particular piece of code. I find that usually these make more sense to read in the context of the code. Sometimes if the work item is large, it may additionally warrant an issue to be filed so that the work can be tracked as a larger unit of work. I also find it useful to leave TODOs as an explicit note of an area of code that can be improved, but where I did not have time to refine it (or it did not make sense to prioritize). This is especially useful in terms of code reviews.
+
+b) I'll typically rely only on issues when:
+- there isn't a specific part of the code that the TD is addressing
+- the TD needs to be tackled as a larger project involving several engineers
+- the TD leads to some product issue. Filing an issue makes it easier to discuss with others and reference.
+
+That being said, I usually use the one that is more convenient at the time. So these are certainly not hard-and-fast rules that I always obey.",*C5. If it has a local scope
